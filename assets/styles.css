@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-image: url("pencil.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Marck Script', cursive;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 7vw;     /* slightly more to the right */
+}
+
+h1 {
+    color: #8a8377;
+    font-size: 3.6rem;          /* slightly smaller → looks thinner */
+    font-weight: normal;
+    letter-spacing: 0.5px;      /* adds thin, airy feel */
+    text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+}

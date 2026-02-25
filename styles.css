@@ -4,14 +4,17 @@
     box-sizing: border-box;
 }
 
-/* Make sure body fills the viewport */
+/* Make the page always fill the visible screen */
 html,
 body {
     height: 100%;
 }
 
 body {
+    /* Fallback + modern mobile units */
     min-height: 100vh;
+    min-height: 100dvh;
+
     background-image: url("assets/pencil.jpg");
     background-size: cover;
     background-position: center;
@@ -19,60 +22,67 @@ body {
     font-family: 'Marck Script', cursive;
 }
 
-/* Semi-transparent dark layer + centering of text */
+/* Dark overlay + positioning wrapper */
 .overlay {
     width: 100%;
-    height: 100%;
     min-height: 100vh;
+    min-height: 100dvh;
 
     background-color: rgba(0,0,0,0.45);
 
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;   /* a bit to the right on desktop */
     align-items: center;
 
-    /* Horizontal padding instead of only left – behaves better on phones */
-    padding: 0 7vw;
+    padding-left: 10vw;
+    padding-right: 5vw;
 }
 
-/* Responsive typography */
+/* Heading style */
 h1 {
     color: #8a8377;
-
-    /* clamp(min, preferred, max) -> scales nicely on all screens */
-    font-size: clamp(2.2rem, 6vw, 3.6rem);
-
     font-weight: normal;
     letter-spacing: 0.5px;
-    text-align: center;
-
     text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+
+    /* responsive size */
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    max-width: 14ch;          /* keeps the text in a nice block */
 }
 
 /* ---------- Tablets & small laptops ---------- */
 @media (max-width: 1024px) {
     body {
-        /* Slight shift if your main focus in the image is off-center */
         background-position: 55% center;
     }
 
     .overlay {
-        padding: 0 10vw;
+        padding-left: 12vw;
+        padding-right: 12vw;
     }
 }
 
 /* ---------- Phones (portrait) ---------- */
 @media (max-width: 600px) {
     body {
-        background-position: 60% center; /* show more interesting center area on phones */
+        /* Show a bit more of the point of the pencil */
+        background-position: 60% center;
     }
 
     .overlay {
-        padding: 0 12vw;
+        /* On phones: center horizontally, move text a bit up */
+        justify-content: center;
+        align-items: flex-start;
+
+        padding-left: 10vw;
+        padding-right: 10vw;
+        padding-top: calc(env(safe-area-inset-top, 0px) + 18vh);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
     }
 
     h1 {
-        font-size: clamp(1.9rem, 9vw, 2.4rem);
+        text-align: center;
+        font-size: clamp(1.9rem, 7vw, 2.4rem);
         line-height: 1.3;
     }
 }

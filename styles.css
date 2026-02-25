@@ -4,8 +4,14 @@
     box-sizing: border-box;
 }
 
+/* Make sure body fills the viewport */
+html,
 body {
-    height: 100vh;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
     background-image: url("assets/pencil.jpg");
     background-size: cover;
     background-position: center;
@@ -13,20 +19,60 @@ body {
     font-family: 'Marck Script', cursive;
 }
 
+/* Semi-transparent dark layer + centering of text */
 .overlay {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
+
     background-color: rgba(0,0,0,0.45);
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 7vw;     /* slightly more to the right */
+
+    /* Horizontal padding instead of only left – behaves better on phones */
+    padding: 0 7vw;
 }
 
+/* Responsive typography */
 h1 {
     color: #8a8377;
-    font-size: 3.6rem;          /* slightly smaller → looks thinner */
+
+    /* clamp(min, preferred, max) -> scales nicely on all screens */
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+
     font-weight: normal;
-    letter-spacing: 0.5px;      /* adds thin, airy feel */
+    letter-spacing: 0.5px;
+    text-align: center;
+
     text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+}
+
+/* ---------- Tablets & small laptops ---------- */
+@media (max-width: 1024px) {
+    body {
+        /* Slight shift if your main focus in the image is off-center */
+        background-position: 55% center;
+    }
+
+    .overlay {
+        padding: 0 10vw;
+    }
+}
+
+/* ---------- Phones (portrait) ---------- */
+@media (max-width: 600px) {
+    body {
+        background-position: 60% center; /* show more interesting center area on phones */
+    }
+
+    .overlay {
+        padding: 0 12vw;
+    }
+
+    h1 {
+        font-size: clamp(1.9rem, 9vw, 2.4rem);
+        line-height: 1.3;
+    }
 }

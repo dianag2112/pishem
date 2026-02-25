@@ -9,12 +9,12 @@ body {
     height: 100%;
 }
 
-/* ---------- Десктоп (основен стил) ---------- */
+/* -------- DESKTOP (default) -------- */
 
 body {
     min-height: 100vh;
     background-image: url("assets/pencil.jpg");
-    background-size: cover;          /* запазва естествената сянка */
+    background-size: cover;           /* fills the screen, small crop is OK */
     background-position: center center;
     background-repeat: no-repeat;
     background-color: #000;
@@ -27,10 +27,10 @@ body {
     background-color: rgba(0, 0, 0, 0.45);
 
     display: flex;
-    justify-content: center;         /* център по хоризонтал */
-    align-items: center;             /* център по вертикал */
+    justify-content: center;
+    align-items: center;
 
-    padding-left: 5vw;
+    padding-left: 3vw;
     padding-right: 5vw;
 }
 
@@ -40,35 +40,36 @@ h1 {
     letter-spacing: 0.5px;
     text-shadow: 0 2px 8px rgba(0,0,0,0.75);
 
-    /* една линия */
-    white-space: nowrap;
-
-    /* размер, който работи навсякъде */
+    white-space: nowrap;                 /* one line */
     font-size: clamp(1.8rem, 3vw, 3.4rem);
 
-    /* леко надясно на десктоп */
-    transform: translateX(4vw);
+    /* move text slightly to the right on PC */
+    transform: translateX(6vw);
 }
 
-/* ---------- Телефони / таблети ---------- */
+/* -------- PHONES & SMALL TABLETS -------- */
 
 @media (max-width: 900px) {
+
+    /* show the FULL picture with BOTH shadows */
     body {
-        background-size: cover;          /* НЕ използваме contain */
-        background-position: center top; /* вижда се хубавата сянка отгоре */
+        background-size: contain;        /* no cropping, whole image */
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: #000;          /* bars above/below are black */
     }
 
     .overlay {
-        justify-content: center;
-        align-items: center;
+        justify-content: center;         /* center text horizontally */
+        align-items: center;             /* center text vertically */
         padding-left: 6vw;
         padding-right: 6vw;
     }
 
     h1 {
-        transform: none;                 /* без изместване на мобилно */
+        transform: none;                 /* no extra shift on mobile */
         text-align: center;
-        font-size: clamp(1.5rem, 5.5vw, 2.2rem);
-        white-space: nowrap;
+        white-space: nowrap;             /* stay on one line */
+        font-size: clamp(1.4rem, 5.5vw, 2.2rem);
     }
 }

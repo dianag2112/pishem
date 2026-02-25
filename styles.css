@@ -1,73 +1,23 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
-}
-
-/* ---------- BASE / DESKTOP ---------- */
-
-body {
-    min-height: 100vh;
-    background-image: url("assets/pencil.jpg");
-    background-size: cover;              /* fill screen on desktop */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #000;
-    font-family: 'Marck Script', cursive;
-}
-
-.overlay {
-    width: 100%;
-    min-height: 100vh;
-    background-color: rgba(0,0,0,0.45);
-
-    display: flex;
-    justify-content: flex-start;         /* so padding-left moves text */
-    align-items: center;
-
-    /* move the text to the right on PC */
-    padding-left: 42vw;                  /* ← tweak this: 22–28vw */
-    padding-right: 5vw;
-}
-
-h1 {
-    color: #8a8377;
-    font-weight: normal;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.75);
-
-    /* ONE LINE ONLY */
-    white-space: nowrap;
-
-    /* responsive but not crazy */
-    font-size: clamp(1.8rem, 3vw, 3.4rem);
-}
-
-/* ---------- TABLETS & PHONES ---------- */
-
+/* ---------- PHONES ---------- */
 @media (max-width: 900px) {
+
     body {
-        background-size: contain;       /* show full image */
-        background-position: bottom center; /* push image down */
+        background-size: cover;      /* keep natural shadow */
+        background-position: center 30%;  /* move image downward */
         background-repeat: no-repeat;
-        background-color: #000;         /* black bars only on top */
+        background-color: #000;
     }
 
     .overlay {
         justify-content: center;
-        align-items: flex-end;          /* text follows image downward */
-        padding-bottom: 10vh;           /* adjust so text sits nicely */
+        align-items: center;
         padding-left: 6vw;
         padding-right: 6vw;
     }
 
     h1 {
         text-align: center;
-        font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        white-space: nowrap;
     }
 }

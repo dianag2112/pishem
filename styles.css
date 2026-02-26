@@ -9,67 +9,43 @@ body {
     height: 100%;
 }
 
-/* -------- DESKTOP (default) -------- */
-
 body {
-    min-height: 100vh;
-    background-image: url("assets/pencil.jpg");
-    background-size: cover;           /* fills the screen, small crop is OK */
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-color: #000;
     font-family: "Marck Script", cursive;
+
+    background-image: url("assets/feather.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .overlay {
+    text-align: center;
+    padding: 1.5rem;
     width: 100%;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.45);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-left: 3vw;
-    padding-right: 5vw;
 }
 
-h1 {
-    color: #8a8377;
-    font-weight: normal;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.75);
-
-    white-space: nowrap;                 /* one line */
-    font-size: clamp(1.8rem, 3vw, 3.4rem);
-
-    /* move text slightly to the right on PC */
-    transform: translateX(6vw);
+.overlay h1 {
+    color: #b7afa4;
+    font-size: clamp(2rem, 6vw, 4rem);
+    text-shadow:
+            0 0 8px rgba(0, 0, 0, 0.7),
+            0 0 18px rgba(255, 255, 255, 0.15);
+    letter-spacing: 0.08em;
 }
 
-/* -------- PHONES & SMALL TABLETS -------- */
-
-@media (max-width: 900px) {
-
-    /* show the FULL picture with BOTH shadows */
-    body {
-        background-size: contain;        /* no cropping, whole image */
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-color: #000;          /* bars above/below are black */
+@media (max-width: 480px) {
+    .overlay h1 {
+        letter-spacing: 0.04em;
     }
+}
 
-    .overlay {
-        justify-content: center;         /* center text horizontally */
-        align-items: center;             /* center text vertically */
-        padding-left: 6vw;
-        padding-right: 6vw;
-    }
-
-    h1 {
-        transform: none;                 /* no extra shift on mobile */
-        text-align: center;
-        white-space: nowrap;             /* stay on one line */
-        font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+@media (min-width: 1200px) {
+    .overlay h1 {
+        font-weight: 400;
     }
 }
